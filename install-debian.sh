@@ -16,21 +16,25 @@ ask() {
 }
 
 # get directory
+getPath() {
     echo "Enter install path (in /data/):"
     read path
     path="/data/"$path
     echo "Are you sure you want to install debian in $path/? [y/n]"
     if ask; then
-    	return
+    	return 
     else
 	getPath
     fi
+}
+getPath
 
 # install dependencies
     echo "Installing dependencies"
     apt-get install debootstrap binutils > /dev/null
 
 # running debootstrap
+installDebian() {
     if [[ -e "$path/" ]]; then
 	echo "Directory $path/ already exists. Do you want to skip installation and start setup? [y/n]"
 	if ask; then
@@ -53,7 +57,8 @@ ask() {
     esac
     echo "Installing Debian $codename. This might take a while"
     sudo debootstrap --extractor=ar --variant=minbase --arch=arm64 forky $path/ http://deb.debian.org/debian/ > /dev/null
-
+}
+installDebian
 # modifying debian
     echo "Modifying Debian resolver"
     printf "nameserver 1.1.1.1\nnameserver 1.0.0.1\n" | sudo tee "$path/etc/resolv.conf" > /dev/null
