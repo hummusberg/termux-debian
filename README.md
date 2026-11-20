@@ -3,7 +3,7 @@
 
 To install Debian run install-debian.sh without root.
 
-To launch it it run launch-debian.sh with root.
+To launch it run launch-debian.sh with root.
 
 Do not touch setup-debian.sh.
 
