@@ -15,6 +15,7 @@ set -euo pipefail
     apt-get update > /dev/null
     apt-get download -y perl-base > /dev/null
     apt-get install -y ./perl-*> /dev/null
+    rm ./perl-* > /dev/null
 
 # user creation
     echo "Starting user setup"

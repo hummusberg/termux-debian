@@ -84,8 +84,7 @@ installDebian
     sed -i "6c\path=$path" ./launch-debian.sh
 
 # clean up
-    echo "Cleaning files"
-    sudo rm $path/perl*
+    echo "Cleaning up files"
     sudo rm $path/setup-debian.sh
 
 echo "Setup Complete! Use launch-debian.sh to start Debian"
